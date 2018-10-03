@@ -1,0 +1,52 @@
+.analysisStyle{
+  .fontColor{
+    color:red;
+  }
+  .inputStyle{
+    width: 80%;
+    padding-left: 4px;
+    line-height: 30px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin: 12px 0;
+  }
+  .btnStyle{
+    margin: 2px;
+    height: 34px;
+    padding: 0 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: chocolate;
+    color: #fff;
+    text-align: center;
+    &:hover{
+      background-color: #fff;
+      color: chocolate;
+    }
+  }
+  .flexCenter{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .fatherBox{
+    margin: 12px;
+    width: 200px;
+    height: 200px;
+    background: red;
+    @extend .flexCenter;
+    .sonBox{
+      width: 150px;
+      height: 150px;
+      background: yellow;
+      @extend .flexCenter;
+      .grandsonBox{
+        width: 100px;
+        height: 100px;
+        background: blue;
+        color: white;
+        @extend .flexCenter;
+      }
+    }
+  }
+}
