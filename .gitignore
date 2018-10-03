@@ -1,7 +1,9 @@
 
 
-node_module
+/node_module/*
 
-public/
+/public/*
 
 package-lock.js
+
+.gitignore
