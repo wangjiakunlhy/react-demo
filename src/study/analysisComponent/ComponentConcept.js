@@ -11,12 +11,24 @@ class ComponentConcept extends Component{
 
     constructor(props){
         super(props);
+        this.state = {
+            text:"我是状态机",
+        }
+    }
+
+    changeText = () => {
+        this.setState({text:'我变了'},()=>{
+            console.log('text已经变了，页面变了吗？');
+        })
     }
 
     render(){
-        const { text } = this.props;
+        const { text } = this.state;
         return(
-            <div>Hello Component</div>
+            <div>
+                <div onClick={this.changeText}>Hello Component</div>
+                <ComponentConcept2 text={text}/>
+            </div>
         )
     }
 
@@ -43,6 +55,7 @@ function ComponentConcept2({text = "hello 纯函数"}) {
 
     return (
        <div>{text}</div>
+
     )
 }
 

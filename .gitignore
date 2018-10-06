@@ -8,4 +8,4 @@ package-lock.js
 
 .gitignore
 
-.idea
+.idea/*
