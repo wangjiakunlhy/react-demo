@@ -30,7 +30,7 @@ class Father extends Component{
         console.log('father',this.props);
         return (
             <div>
-                <div>{`姓名state: ${name}`}</div>
+                <div>{'姓名state:' + name}</div>
                 <div>下面是一个子组件：</div>
                 <br/>
                 {
@@ -76,7 +76,7 @@ class Son extends Component{
         const { hello, whoUse } = this.props;
         return (
             <div className='analysisStyle'>
-                <div>{`姓名state: ${name}`}</div>
+                <div>{'姓名state:' + name}</div>
                 <div>我是Son</div>
                 {this.props.children}
                 <div>{whoUse}</div>
