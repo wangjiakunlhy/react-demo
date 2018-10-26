@@ -11,10 +11,18 @@ class LifeCycle extends Component{
         }
     }
 
-    static getDerivedStateFromProps(nextProps,nextState){
-        /** 一顶三的静态函数 代替componentWillMount、componentWillUpdate、componentWillReceiveProps三个生命周期函数**/
+    /*static getDerivedStateFromProps(nextProps,nextState){
+        /!** 一顶三的静态函数 代替componentWillMount、componentWillUpdate、componentWillReceiveProps三个生命周期函数**!/
         console.log('getDerivedStateFromProps',nextProps,nextState);
-    }
+        console.log(nextState);
+        if(nextProps.title === 'changed')
+        return {
+            temp: nextProps.title === 'changed' ? '6666':'9999',
+            life: 'dssdfsfsf',
+        }
+        return null;
+        // return 的返回值是最新的state，也就是说可以在这里重新设置state的值。
+    }*/
 
     componentWillMount(){
         console.log('componentWillMount:组件挂在开始');
@@ -63,7 +71,7 @@ class LifeCycle extends Component{
         const { life } = this.state;
         return (
             <div className='box'>
-                { life ? '生命周期' : '我是生命周期' }
+                { life ? life : '我是生命周期' }
                 <button ref='btn' onClick={this.toChangeLift}>改变</button>
                 {title}
             </div>

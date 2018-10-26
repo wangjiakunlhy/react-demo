@@ -21,12 +21,12 @@ const AttributeAgentHigherOrderComponent2 = (BaseComponent) =>
         render(){
             const { value } = this.state;
             const newProps = {
-              value: value,
+              value: value,// input 的value属性
               eventOnChange:{
-                  onChange: this.onValueChange
+                  onChange: this.onValueChange,// input的onChange监听，方法在高阶组件内
               },
             }
-            const props = Object.assign({},this.props,newProps);
+            const props = Object.assign({},this.props,newProps);// 合成最新的props传给传入组件
             return (
                 <BaseComponent {...props}/>
             )

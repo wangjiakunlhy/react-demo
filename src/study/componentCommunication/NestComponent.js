@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Daughters from './Daughter'
-import context from "./SayWordContext";
-const { Grand, Daughter } = context;
+import contextAndEvent from "./SayWordContext";
+const { Grand, eventEmitter } = contextAndEvent;
 
 // 奶奶让妈妈叫孙女吃饭，孙女直接告诉奶奶她吃完了。
 class NestComponent extends Component{
@@ -26,11 +26,23 @@ class Grandmother extends Component{
         this.state = {
             sentence:'',// 奶奶自己说的话
             response:'',// 妈妈回应的话
+            girlResponse: '',// 孙女说的话
         }
     }
 
     toSay = () => {
         this.setState({sentence:'吃饭了，叫下那小家伙！'})
+    }
+
+    componentDidMount(){
+        // 组件渲染完毕添加事件监听
+        this.girlSay = eventEmitter.on('girlSay',words => {
+            this.setState({girlResponse: words});
+        })
+    }
+
+    componentWillUnmount(){
+        eventEmitter.removeListener(this.girlSay);// 组件卸载时清除监听
     }
 
     /**
@@ -42,7 +54,7 @@ class Grandmother extends Component{
     }
 
     render(){
-        const { sentence, response } = this.state;
+        const { sentence, response, girlResponse } = this.state;
         return (
             <Grand.Provider value={sentence}>
                 <div style={{border:'1px solid #ccc'}}>
@@ -57,6 +69,12 @@ class Grandmother extends Component{
                         response && <div>
                             <span>妈妈回应：</span>
                             <span>{response}</span>
+                        </div>
+                    }
+                    {
+                        girlResponse && <div>
+                            <span>孙女回应：</span>
+                            <span>{girlResponse}</span>
                         </div>
                     }
                     <Mother grand={sentence} callBack={this.getResponseFromMather}/>

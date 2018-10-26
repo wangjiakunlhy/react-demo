@@ -1,6 +1,6 @@
 import React,{ Component } from 'react';
-import context from './SayWordContext';
-const { Grand, Daughter } = context;
+import contextAndEvent from './SayWordContext';
+const {Grand, eventEmitter } = contextAndEvent;
 
 class Daughters extends Component{
     constructor(props){
@@ -11,7 +11,9 @@ class Daughters extends Component{
     }
 
     toResponseGrandmother = () => {
-        this.setState({response:'我吃完了！'});
+        this.setState({response:'我吃完了！'},()=>{
+            eventEmitter.emit('girlSay','我吃完了！');
+        });
     }
 
     render(){

@@ -57,3 +57,30 @@ const HOC = (param = {isUseDefault:true}) =>
 
 
 export default HOC
+
+        const HocComp1 = WrapperComponent =>
+             class extends Component{
+
+                render(){
+                    return (
+                        <div>
+                            HOC
+                            <WrapperComponent />
+                        </div>
+                    )
+                }
+             }
+
+        const HocComp2 = WrapperComponent =>
+            class extends WrapperComponent{
+
+                render(){
+                    const oldElements = super.render();
+                    return (
+                        <div>
+                            HOC
+                            {oldElements}
+                        </div>
+                    )
+                }
+            }

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import AA2 from './AttributeAgent2';
+import AttributeAgentHigherOrderComponent2 from './AttributeAgent2';
 
-@AA2
+@AttributeAgentHigherOrderComponent2
 class ControlInput extends Component{
     // 一个受控组件，通过属性代理的方式，把控制逻辑放进高阶组件中。
     render(){
@@ -12,4 +12,5 @@ class ControlInput extends Component{
     }
 }
 
-export default ControlInput
+export default ControlInput;
+// export default AttributeAgentHigherOrderComponent2(ControlInput);
