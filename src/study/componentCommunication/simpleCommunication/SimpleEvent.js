@@ -19,7 +19,7 @@ class SimpleEvent1 extends Component{
     }
 
     componentWillUnmount(){
-        emitter.removeListener(this.response);// 组件卸载时清除监听即取消订阅
+        emitter.removeListener('sayHello',()=>{});// 组件卸载时清除监听即取消订阅
     }
 
     render(){
