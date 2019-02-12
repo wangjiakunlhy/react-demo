@@ -1,4 +1,4 @@
-import React,{ Component } from 'react';
+import React,{ Component, PureComponent } from 'react';
 import AppTestLifeCycle from './lifeCycle/app';
 import ComponentConcept from './analysisComponent/ComponentConcept';
 import NestComponent from './componentCommunication/NestComponent';
@@ -13,11 +13,13 @@ import ControlInput from './higherOrderComponent/BaseComponent2';
 import ReverseInherit from './higherOrderComponent/BaseComponent3';
 import ButtonComponent1 from "./higherOrderComponent/powerButton/ButtonComponent1";
 import ButtonComponent2 from "./higherOrderComponent/powerButton/ButtonComponent2";
+import ReactSmoothDemo from "./reactAnimation/ReactSmoothDemo";
+import ReactMotionDemo from "./reactAnimation/ReactMotionDemo";
 
 import '../style/testComponent.scss'
+import { connect } from 'react-redux';
 
-
-class TestComponent extends Component{
+class TestComponent extends PureComponent{
     constructor(props){
         super(props);
         this.state = {
@@ -37,12 +39,15 @@ class TestComponent extends Component{
                 {name:'HOC-反向继承1',comp:<ReverseInherit />},
                 {name:'HOC-反向继承2',comp:<ButtonComponent1 />},
                 {name:'HOC-反向继承2.1',comp:<ButtonComponent2 />},
+                {name:'ReactSmooth',comp:<ReactSmoothDemo />},
+                {name:'ReactMotion',comp:<ReactMotionDemo />},
             ]
         }
     }
 
     changeShowComponent = (item) => {
         this.setState({currentComponent:item});
+        console.log('--------',this.props.userInfo);
     }
 
     render(){
@@ -78,4 +83,11 @@ class TestComponent extends Component{
     }
 }
 
-export  default  TestComponent;
+function setStateMap(state) {
+    console.log(state);
+    return {
+        userInfo:state.setUser.userInfo,
+    }
+}
+
+export  default  connect(setStateMap)(TestComponent);

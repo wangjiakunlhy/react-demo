@@ -42,7 +42,7 @@ class Grandmother extends Component{
     }
 
     componentWillUnmount(){
-        eventEmitter.removeListener(this.girlSay);// 组件卸载时清除监听
+        // eventEmitter.removeListener(this.girlSay._events.girlSay);// 组件卸载时清除监听
     }
 
     /**

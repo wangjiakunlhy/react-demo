@@ -1,0 +1,35 @@
+.reactSmooth{
+  padding-left: 30px;
+  .baseMenu{
+    width:40px;
+    height:40px;
+    background: #179aff;
+    margin-top: 20px;
+  }
+  .menuItem{
+    margin-top: 20px;
+    width:40px;
+    height:40px;
+    top:140px;
+    border-radius: 50%;
+  }
+  .menuItem1{
+    @extend .menuItem;
+    background: goldenrod;
+  }
+
+  .menuItem2{
+    @extend .menuItem;
+    background: #cccccc;
+  }
+
+  .menuItem3{
+    @extend .menuItem;
+    background: chocolate;
+  }
+
+  .menuItem4{
+    @extend .menuItem;
+    background: darkgreen;
+  }
+}

@@ -9,10 +9,12 @@ module.exports = {
         filename: "js/bundle.js"
     },
     devServer: {
+        port:8088,
         contentBase: './public',
         historyApiFallback: true,
         inline: true // 实时刷新
     },
+    mode: 'production',
     module: {
         rules: [
             {
